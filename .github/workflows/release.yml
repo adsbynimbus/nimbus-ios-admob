@@ -24,7 +24,7 @@ jobs:
           fi
 
           echo "Using podspec: $PODSPEC"
-          sed -i "s/version-placeholder/${VERSION}/g" "$PODSPEC"
+          sed -i "s/0.0.1-development/${VERSION}/g" "$PODSPEC"
 
           echo "PODSPEC=$PODSPEC" >> "$GITHUB_ENV"
 
