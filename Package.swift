@@ -11,7 +11,7 @@ var package = Package(
            targets: ["NimbusAdMobKit"])
     ],
     dependencies: [
-        .package(url: "https://github.com/googleads/swift-package-manager-google-mobile-ads", from: "12.0.0")
+        .package(url: "https://github.com/googleads/swift-package-manager-google-mobile-ads", from: "13.0.0")
     ],
     targets: [
         .target(
@@ -31,4 +31,4 @@ var package = Package(
     ]
 )
 
-package.dependencies.append(.package(url: "https://github.com/adsbynimbus/nimbus-ios-sdk", from: "3.0.0"))
+package.dependencies.append(.package(url: "https://github.com/adsbynimbus/nimbus-ios-sdk", from: "3.0.0-rc.1"))
