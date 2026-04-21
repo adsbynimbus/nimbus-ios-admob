@@ -16,4 +16,7 @@ Pod::Spec.new do |spec|
         :git => "https://github.com/adsbynimbus/nimbus-ios-admob.git", 
         :tag => spec.version.to_s
     }
+
+    spec.dependency 'NimbusSDK/NimbusKit', '~> 3'
+    spec.dependency 'Google-Mobile-Ads-SDK', '~> 12'
 end

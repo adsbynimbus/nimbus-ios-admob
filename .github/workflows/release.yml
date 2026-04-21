@@ -4,7 +4,7 @@ on:
 
 jobs:
   publish_pods:
-    if: ${{ !contains(github.repository, 'internal') }}
+    if: ${{ startsWith(github.repository, 'adsbynimbus/nimbus-ios-') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -24,7 +24,7 @@ jobs:
           fi
 
           echo "Using podspec: $PODSPEC"
-          sed -i "s/0.0.1-development/${VERSION}/g" "$PODSPEC"
+          sed -i "s/0\.0\.1-development/${VERSION}/" "$PODSPEC"
 
           echo "PODSPEC=$PODSPEC" >> "$GITHUB_ENV"
 
