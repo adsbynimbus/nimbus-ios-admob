@@ -11,9 +11,9 @@ import GoogleMobileAds
 
 final class NimbusAdMobAdController: AdController,
                                      BannerViewDelegate,
-                                     @preconcurrency NativeAdLoaderDelegate,
+                                     NativeAdLoaderDelegate,
                                      FullScreenContentDelegate,
-                                     @preconcurrency NativeAdDelegate {
+                                     NativeAdDelegate {
     
     // MARK: - Properties
     
