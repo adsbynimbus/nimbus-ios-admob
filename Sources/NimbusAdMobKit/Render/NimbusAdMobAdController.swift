@@ -138,7 +138,7 @@ final class NimbusAdMobAdController: AdController,
         } else if let rewardedAd, let adPresentingViewController {
             rewardedAd.present(from: adPresentingViewController) { [weak self] in
                 Nimbus.Log.ad.debug("AdMob Event: user earned reward")
-                self?.sendNimbusEvent(.completed)
+                self?.sendNimbusEvent(.rewardEarned)
             }
         } else {
             sendNimbusError(.admob(reason: .invalidState, stage: .render, detail: "Ad \(adRenderType) is invalid and could not be presented."))
