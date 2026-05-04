@@ -4,13 +4,13 @@ A Nimbus SDK extension for **AdMob bidding and rendering**. It enriches Nimbus a
 
 ## Versioning
  
-NimbusAdMobKit **major versions are kept in sync** with the GoogleMobileAds SDK. For example, NimbusAdMobKit `12.x.x` depends on GoogleMobileAds SDK `12.x.x`.
+NimbusAdMobKit **major versions are kept in sync** with the GoogleMobileAds SDK. For example, NimbusAdMobKit `13.x.x` depends on GoogleMobileAds SDK `13.x.x`.
  
 Minor and patch versions are independent — a NimbusAdMobKit patch release does not necessarily correspond to a GoogleMobileAds SDK patch release, and vice versa.
  
 | NimbusAdMobKit | GoogleMobileAds SDK |
 |---|---|
-| 12.x.x | 12.x.x |
+| 13.x.x | 13.x.x |
 
 ## Installation
 
@@ -23,7 +23,7 @@ Minor and patch versions are independent — a NimbusAdMobKit patch release does
    ```
    https://github.com/adsbynimbus/nimbus-ios-admob
    ```
-3. Set the dependency rule to **Up to Next Major Version** and enter `12.0.0` as the minimum.
+3. Set the dependency rule to **Up to Next Major Version** and enter `13.0.0` as the minimum.
 4. Click **Add Package** and select the **NimbusAdMobKit** library when prompted.
 
 #### Package.swift
@@ -32,7 +32,7 @@ If you're managing dependencies through a `Package.swift` file, add the followin
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/adsbynimbus/nimbus-ios-admob", from: "12.0.0")
+    .package(url: "https://github.com/adsbynimbus/nimbus-ios-admob", from: "13.0.0")
 ]
 ```
 
