@@ -47,7 +47,7 @@ public extension AdController.AdRenderType {
             return signalRequest
         case .native:
             guard let nativeAdOptions else {
-                throw NimbusError.admob(reason: .misconfiguration, stage: .request, detail: "Native ad options are missing")
+                throw NimbusError.admob(reason: .configuration, stage: .request, detail: "Native ad options are missing")
             }
             
             let signal = NativeSignalRequest(signalType: "requester_type_2")

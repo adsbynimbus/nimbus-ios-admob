@@ -124,7 +124,7 @@ struct NimbusAdMobInterceptorAsyncTests {
         }
         
         #expect(error!.domain == .admob)
-        #expect(error!.reason == .misconfiguration)
+        #expect(error!.reason == .configuration)
         #expect(error!.stage == .request)
         #expect(error!.detail == "Native ad options are missing")
     }

@@ -104,7 +104,7 @@ final class NimbusAdMobAdController: AdController,
             }
         case .native:
             guard let _ = AdMobExtension.nativeAdViewProvider else {
-                sendNimbusError(.admob(reason: .misconfiguration, stage: .render, detail: "AdMobExtension.nativeAdViewProvider must be set to render native ads"))
+                sendNimbusError(.admob(reason: .configuration, stage: .render, detail: "AdMobExtension.nativeAdViewProvider must be set to render native ads"))
                 return
             }
 
@@ -204,7 +204,7 @@ final class NimbusAdMobAdController: AdController,
     }
     
     func adLoader(_ adLoader: AdLoader, didFailToReceiveAdWithError error: any Error) {
-        sendNimbusError(.admob(reason: .misconfiguration, stage: .render, detail: "Failed to receive native ad, error: \(error.localizedDescription)"))
+        sendNimbusError(.admob(reason: .configuration, stage: .render, detail: "Failed to receive native ad, error: \(error.localizedDescription)"))
     }
     
     func adLoaderDidFinishLoading(_ adLoader: AdLoader) {
