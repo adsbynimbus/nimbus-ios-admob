@@ -18,5 +18,5 @@ Pod::Spec.new do |spec|
     }
 
     spec.dependency 'NimbusSDK/NimbusKit', '~> 3'
-    spec.dependency 'Google-Mobile-Ads-SDK', '~> 12'
+    spec.dependency 'Google-Mobile-Ads-SDK', '~> 13'
 end
