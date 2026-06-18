@@ -9,6 +9,7 @@ import UIKit
 import NimbusKit
 import GoogleMobileAds
 
+// Internal: Do NOT implement delegate conformance as separate extensions as the methods will not be found in runtime when built as a static library
 final class NimbusAdMobAdController: AdController,
                                      BannerViewDelegate,
                                      NativeAdLoaderDelegate,
@@ -233,5 +234,3 @@ final class NimbusAdMobAdController: AdController,
 // Contract: we only ever interact with these objects on MainActor / main thread.
 extension GoogleMobileAds.InterstitialAd: @unchecked @retroactive Sendable {}
 extension GoogleMobileAds.RewardedAd: @unchecked @retroactive Sendable {}
-
-// Internal: Do NOT implement delegate conformance as separate extensions as the methods won't not be found in runtime when built as a static library
