@@ -33,7 +33,7 @@ final class NimbusRequestAdMobTests: XCTestCase {
             preferredAdChoicesPosition: .topLeftCorner,
             customMuteThisAdRequested: false)
         
-        let ad = try Nimbus.inlineAd(position: "pos") {
+        let ad = Nimbus.inlineAd(position: "pos") {
             native()
             admob(nativeAdUnitId: "nativePlacement", options: options)
         }
@@ -51,7 +51,7 @@ final class NimbusRequestAdMobTests: XCTestCase {
     
     @MainActor
     func test_admob_interstitial_interceptor_gets_added() throws {
-        let ad = try Nimbus.interstitialAd(position: "pos") {
+        let ad = Nimbus.interstitialAd(position: "pos") {
             admob(interstitialAdUnitId: "interstitialPlacement")
         }
         
@@ -63,7 +63,7 @@ final class NimbusRequestAdMobTests: XCTestCase {
     
     @MainActor
     func test_admob_rewarded_interceptor_gets_added() throws {
-        let ad = try Nimbus.rewardedAd(position: "pos") {
+        let ad = Nimbus.rewardedAd(position: "pos") {
             admob(rewardedAdUnitId: "rewardedPlacement")
         }
         let interceptor = ad.adRequest!.request.interceptors[0] as! NimbusAdMobRequestInterceptor

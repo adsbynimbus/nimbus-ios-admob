@@ -12,16 +12,16 @@ protocol AdMobRequestBridgeType: Sendable {
 }
 
 final class AdMobRequestBridge: AdMobRequestBridgeType {
-    public init() {}
+    init() {}
     
     @inlinable
-    public static func set(coppa: Bool) {
+    static func set(coppa: Bool) {
         MobileAds
             .shared
             .requestConfiguration.tagForChildDirectedTreatment = NSNumber(booleanLiteral: coppa)
     }
     
-    public func generateSignal(request: SignalRequest) async throws -> String {
+    func generateSignal(request: SignalRequest) async throws -> String {
         try await MobileAds.generateSignal(request).signal
     }
 }
