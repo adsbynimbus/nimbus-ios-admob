@@ -26,6 +26,11 @@ var package = Package(
             dependencies: ["NimbusAdMobKit"],
             swiftSettings: [
                 .swiftLanguageMode(.v5)
+            ],
+            linkerSettings: [
+                // GoogleMobileAds is linked statically and ships ObjC categories (e.g. AdLoader's
+                // server-to-server loading); -ObjC keeps them in the test binary.
+                .unsafeFlags(["-ObjC"])
             ]
         ),
     ]

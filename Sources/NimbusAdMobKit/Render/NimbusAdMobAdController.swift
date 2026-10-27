@@ -14,16 +14,17 @@ final class NimbusAdMobAdController: AdController,
                                      BannerViewDelegate,
                                      NativeAdLoaderDelegate,
                                      FullScreenContentDelegate,
-                                     NativeAdDelegate {
+                                     NativeAdDelegate,
+                                     VideoControllerDelegate {
     
     // MARK: - Properties
     
     // MARK: AdMob properties
-    private var bannerAd: BannerView?
-    private var interstitialAd: GoogleMobileAds.InterstitialAd?
-    private var rewardedAd: GoogleMobileAds.RewardedAd?
-    private var nativeAdLoader: AdLoader?
-    private var nativeAd: NativeAd?
+    var bannerAd: BannerView?
+    var interstitialAd: GoogleMobileAds.InterstitialAd?
+    var rewardedAd: GoogleMobileAds.RewardedAd?
+    var nativeAdLoader: AdLoader?
+    var nativeAd: NativeAd?
     
     override class func setup(
         response: NimbusResponse,
@@ -126,6 +127,7 @@ final class NimbusAdMobAdController: AdController,
             adView.addSubview(bannerAd)
         } else if let nativeAd, let nativeAdViewProvider = AdMobExtension.nativeAdViewProvider {
             let nativeAdView = nativeAdViewProvider(adView, nativeAd)
+            nativeAdView.translatesAutoresizingMaskIntoConstraints = false
             adView.addSubview(nativeAdView)
             
             NSLayoutConstraint.activate([
@@ -199,17 +201,15 @@ final class NimbusAdMobAdController: AdController,
     func adLoader(_ adLoader: AdLoader, didReceive nativeAd: NativeAd) {
         nativeAd.rootViewController = adPresentingViewController
         nativeAd.delegate = self
+        nativeAd.mediaContent.videoController.delegate = self
         self.nativeAd = nativeAd
         self.adState = .ready
+        sendNimbusEvent(.loaded)
         presentIfNeeded()
     }
     
     func adLoader(_ adLoader: AdLoader, didFailToReceiveAdWithError error: any Error) {
         sendNimbusError(.admob(reason: .configuration, stage: .render, detail: "Failed to receive native ad, error: \(error.localizedDescription)"))
-    }
-    
-    func adLoaderDidFinishLoading(_ adLoader: AdLoader) {
-        sendNimbusEvent(.loaded)
     }
     
     func nativeAdDidRecordImpression(_ nativeAd: NativeAd) {
@@ -218,6 +218,12 @@ final class NimbusAdMobAdController: AdController,
     
     func nativeAdDidRecordClick(_ nativeAd: NativeAd) {
         sendNimbusEvent(.clicked)
+    }
+    
+    // MARK: - GADVideoControllerDelegate
+    
+    func videoControllerDidEndVideoPlayback(_ videoController: VideoController) {
+        sendNimbusEvent(.completed)
     }
     
     func adLoader(_ adLoader: AdLoader, didFailToLoadWithError error: Error) {
