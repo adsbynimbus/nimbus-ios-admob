@@ -1,5 +1,5 @@
 //
-//  NimbusAdMobRequestInterceptor.swift
+//  AdMobRequestInterceptor.swift
 //  NimbusAdMobKit
 //  Created on 9/3/24
 //  Copyright © 2024 Nimbus Advertising Solutions Inc. All rights reserved.
@@ -8,7 +8,7 @@
 import NimbusKit
 import GoogleMobileAds
 
-final class NimbusAdMobRequestInterceptor {
+final class AdMobRequestInterceptor {
     let adUnitId: String
     let adRenderType: AdController.AdRenderType
     let nativeAdOptions: AdMobNativeAdOptions?
@@ -27,7 +27,7 @@ final class NimbusAdMobRequestInterceptor {
     }
 }
 
-extension NimbusAdMobRequestInterceptor: NimbusRequest.Interceptor {
+extension AdMobRequestInterceptor: NimbusRequest.Interceptor {
     func modifyRequest(request: NimbusRequest) async throws -> [NimbusRequest.Delta] {
         let signalRequest = try adRenderType.adMobSignalRequest(from: request, adUnitId: adUnitId, nativeAdOptions: nativeAdOptions)
         let signal = try await bridge.generateSignal(request: signalRequest)

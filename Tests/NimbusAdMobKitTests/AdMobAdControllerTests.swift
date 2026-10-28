@@ -419,14 +419,14 @@ struct AdMobAdControllerTests {
 
     enum Format { case banner, native, interstitial, rewarded }
 
-    private func makeAdController(_ format: Format) -> (NimbusAdMobAdController, MockDelegate) {
+    private func makeAdController(_ format: Format) -> (AdMobAdController, MockDelegate) {
         let mtype: NimbusResponse.Bid.MarkupType = switch format {
         case .banner, .interstitial: .static
         case .native: .native
         case .rewarded: .video
         }
 
-        let adController = NimbusAdMobAdController(
+        let adController = AdMobAdController(
             response: NimbusResponse(id: "", bid: .init(
                 mtype: mtype,
                 adm: adResponse,

@@ -1,5 +1,5 @@
 //
-//  NimbusAdType+AdMob.swift
+//  AdRenderType+AdMob.swift
 //  Nimbus
 //  Created on 2/24/25
 //  Copyright © 2025 Nimbus Advertising Solutions Inc. All rights reserved.
@@ -8,7 +8,7 @@
 import NimbusKit
 import GoogleMobileAds
 
-public extension AdController.AdRenderType {
+extension AdController.AdRenderType {
     func adMobSignalRequest(
         adUnitId: String,
         bannerSize: CGSize? = nil,

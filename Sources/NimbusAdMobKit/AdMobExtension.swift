@@ -25,7 +25,7 @@ public struct AdMobExtension: NimbusRenderExtension {
     public var network: String { "admob" }
     
     @_documentation(visibility: internal)
-    public var controllerType: AdController.Type { NimbusAdMobAdController.self }
+    public var controllerType: AdController.Type { AdMobAdController.self }
     
     /// Creates an AdMob extension.
     ///

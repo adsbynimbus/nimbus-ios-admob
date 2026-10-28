@@ -80,7 +80,7 @@ private struct AdMob: DemandComponent {
     
     func apply(to adRequest: AdRequest) -> AdRequest {
         var modified = adRequest
-        modified.append(interceptor: NimbusAdMobRequestInterceptor(
+        modified.append(interceptor: AdMobRequestInterceptor(
             adUnitId: adUnitId,
             adRenderType: adRenderType,
             nativeAdOptions: nativeAdOptions

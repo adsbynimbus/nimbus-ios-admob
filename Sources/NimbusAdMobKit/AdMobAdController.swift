@@ -1,5 +1,5 @@
 //
-//  NimbusAdMobAdController.swift
+//  AdMobAdController.swift
 //  NimbusAdMobKit
 //  Created on 9/3/24
 //  Copyright © 2024 Nimbus Advertising Solutions Inc. All rights reserved.
@@ -10,12 +10,12 @@ import NimbusKit
 import GoogleMobileAds
 
 // Internal: Do NOT implement delegate conformance as separate extensions as the methods will not be found in runtime when built as a static library
-final class NimbusAdMobAdController: AdController,
-                                     BannerViewDelegate,
-                                     NativeAdLoaderDelegate,
-                                     FullScreenContentDelegate,
-                                     NativeAdDelegate,
-                                     VideoControllerDelegate {
+final class AdMobAdController: AdController,
+                               BannerViewDelegate,
+                               NativeAdLoaderDelegate,
+                               FullScreenContentDelegate,
+                               NativeAdDelegate,
+                               VideoControllerDelegate {
     
     // MARK: - Properties
     

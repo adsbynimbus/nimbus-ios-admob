@@ -1,5 +1,5 @@
 //
-//  NimbusRequestAdMobTests.swift
+//  AdMobDemandTests.swift
 //  NimbusAdMobKitTests
 //  Created on 9/16/24
 //  Copyright © 2024 Nimbus Advertising Solutions Inc. All rights reserved.
@@ -11,14 +11,14 @@ import XCTest
 import NimbusKit
 import GoogleMobileAds
 
-final class NimbusRequestAdMobTests: XCTestCase {
+final class AdMobDemandTests: XCTestCase {
     @MainActor
     func test_admob_banner_interceptor_gets_added() throws {
-        let ad = try Nimbus.bannerAd(position: "pos", size: .banner) {
+        let ad = Nimbus.bannerAd(position: "pos", size: .banner) {
             admob(bannerAdUnitId: "bannerPlacement")
         }
         
-        let interceptor = ad.adRequest!.request.interceptors[0] as! NimbusAdMobRequestInterceptor
+        let interceptor = ad.adRequest!.request.interceptors[0] as! AdMobRequestInterceptor
         
         XCTAssertEqual(interceptor.adUnitId, "bannerPlacement")
         XCTAssertEqual(interceptor.adRenderType, .banner)
@@ -38,7 +38,7 @@ final class NimbusRequestAdMobTests: XCTestCase {
             admob(nativeAdUnitId: "nativePlacement", options: options)
         }
         
-        let interceptor = ad.adRequest!.request.interceptors[0] as! NimbusAdMobRequestInterceptor
+        let interceptor = ad.adRequest!.request.interceptors[0] as! AdMobRequestInterceptor
         
         XCTAssertEqual(interceptor.adUnitId, "nativePlacement")
         XCTAssertEqual(interceptor.adRenderType, .native)
@@ -55,7 +55,7 @@ final class NimbusRequestAdMobTests: XCTestCase {
             admob(interstitialAdUnitId: "interstitialPlacement")
         }
         
-        let interceptor = ad.adRequest!.request.interceptors[0] as! NimbusAdMobRequestInterceptor
+        let interceptor = ad.adRequest!.request.interceptors[0] as! AdMobRequestInterceptor
         
         XCTAssertEqual(interceptor.adUnitId, "interstitialPlacement")
         XCTAssertEqual(interceptor.adRenderType, .interstitial)
@@ -66,7 +66,7 @@ final class NimbusRequestAdMobTests: XCTestCase {
         let ad = Nimbus.rewardedAd(position: "pos") {
             admob(rewardedAdUnitId: "rewardedPlacement")
         }
-        let interceptor = ad.adRequest!.request.interceptors[0] as! NimbusAdMobRequestInterceptor
+        let interceptor = ad.adRequest!.request.interceptors[0] as! AdMobRequestInterceptor
         
         XCTAssertEqual(interceptor.adUnitId, "rewardedPlacement")
         XCTAssertEqual(interceptor.adRenderType, .rewarded)

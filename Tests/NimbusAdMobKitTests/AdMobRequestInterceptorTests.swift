@@ -1,5 +1,5 @@
 //
-//  NimbusAdMobRequestInterceptorTests.swift
+//  AdMobRequestInterceptorTests.swift
 //  NimbusAdMobKitTests
 //  Created on 9/12/24
 //  Copyright © 2024 Nimbus Advertising Solutions Inc. All rights reserved.
@@ -12,9 +12,9 @@ import GoogleMobileAds
 import Testing
 
 @Suite("AdMob interceptor tests")
-struct NimbusAdMobInterceptorAsyncTests {
+struct AdMobInterceptorAsyncTests {
     @Test func signalDoesntGetAttachedWhenSignalFailed() async {
-        let interceptor = NimbusAdMobRequestInterceptor(
+        let interceptor = AdMobRequestInterceptor(
             adUnitId: "adUnit",
             adRenderType: .interstitial,
             bridge: MockRequestBridge { _ in throw SignalError() }
@@ -27,7 +27,7 @@ struct NimbusAdMobInterceptorAsyncTests {
     }
     
     @Test func signalGetsAttachedToRequest() async throws {
-        let interceptor = NimbusAdMobRequestInterceptor(
+        let interceptor = AdMobRequestInterceptor(
             adUnitId: "adUnit",
             adRenderType: .banner,
             bridge: MockRequestBridge { _ in "signalData" }
@@ -70,7 +70,7 @@ struct NimbusAdMobInterceptorAsyncTests {
         
         let adType = AdController.AdRenderType.native
         
-        let ad = try await Nimbus.inlineAd(position: "pos") { native() }
+        let ad = await Nimbus.inlineAd(position: "pos") { native() }
         let info = try await NimbusRequest(from: ad.adRequest!.request)
         var signalRequest = try adType.adMobSignalRequest(
             from: info,
@@ -115,7 +115,7 @@ struct NimbusAdMobInterceptorAsyncTests {
     }
     
     @Test func missingNativeAdOptionsThrown() async throws {
-        let ad = try await Nimbus.inlineAd(position: "pos") { native() }
+        let ad = await Nimbus.inlineAd(position: "pos") { native() }
         
         let request = try await NimbusRequest(from: ad.adRequest!.request)
         
@@ -130,7 +130,7 @@ struct NimbusAdMobInterceptorAsyncTests {
     }
     
     @Test func interstitialGeneratesCorrectSignalRequest() async throws {
-        var request = try await Nimbus.interstitialAd(position: "pos").adRequest!.request
+        var request = await Nimbus.interstitialAd(position: "pos").adRequest!.request
         request.impressions[0].video = nil
         
         let info = try NimbusRequest(from: request)
